@@ -38,7 +38,7 @@
                     for (provi of prov.provincias) {
                         OpcionProvincia = document.createElement("option");
                         OpcionProvincia.innerHTML = provi;
-                        OpcionProvincia.value=provi
+                        OpcionProvincia.value = provi
 
                         document.getElementById("provincias").appendChild(OpcionProvincia)
 
@@ -47,9 +47,8 @@
 
         }
         function borrarHijos(elemento) {
-
-            // Obtener referencia al elemento padre
-            var padre = document.getElementById(elemento);
+            // Obtener referencia al elemento padre usando su ID
+            var padre = elemento;
             // Verificar si el elemento padre existe
             if (padre) {
                 // Eliminar todos los hijos del elemento padre
@@ -59,7 +58,6 @@
             } else {
                 console.error("El elemento especificado no existe.");
             }
-
         }
 
     </script>

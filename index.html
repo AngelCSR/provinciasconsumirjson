@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provincias</title>
+</head>
+
+<body>
+    <h1>Provincias y Regiones de España</h1>
+    <select name="regiones" id="regiones" onchange="cargaProvincia()">
+
+    </select>
+    <select name="provincias" id="provincias">
+
+    </select>
+    <script>
+
+        fetch("regiones.json")
+            .then(response => response.json())
+            .then(zona => {
+                let miOpcionRegion = null;
+                for (region of zona.regiones) {
+                    miOpcionRegion = document.createElement("option");
+                    miOpcionRegion.innerHTML = region.nombre;
+                    miOpcionRegion.value = region.archivo
+                    document.getElementById("regiones").appendChild(miOpcionRegion)
+                }
+            })
+        function cargaProvincia() {
+            let archivo = document.getElementById("regiones").value;
+            borrarHijos(document.getElementById("provincias"));
+            fetch(archivo)
+                .then(response => response.json())
+                .then(prov => {
+                    let OpcionProvincia = null;
+                    for (provi of prov.provincias) {
+                        OpcionProvincia = document.createElement("option");
+                        OpcionProvincia.innerHTML = provi;
+                        OpcionProvincia.value=provi
+
+                        document.getElementById("provincias").appendChild(OpcionProvincia)
+
+                    }
+                })
+
+        }
+        function borrarHijos(elemento) {
+
+            // Obtener referencia al elemento padre
+            var padre = document.getElementById(elemento);
+            // Verificar si el elemento padre existe
+            if (padre) {
+                // Eliminar todos los hijos del elemento padre
+                while (padre.firstChild) {
+                    padre.removeChild(padre.firstChild);
+                }
+            } else {
+                console.error("El elemento especificado no existe.");
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

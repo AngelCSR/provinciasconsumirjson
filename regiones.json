@@ -1,0 +1,11 @@
+{
+    "regiones": [
+      {"nombre": "Castilla-La Mancha", "archivo": "clm.json"}
+      
+      ,
+       {"nombre":"Comunidad Valenciana","archivo": "valencia.json"}
+      ,
+        {"nombre":"Andalucía","archivo": "andalucia.json"}
+      
+    ]
+  }
